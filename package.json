@@ -8,6 +8,8 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
+    "start:1": "node 1/solution-1.js",
+    "start:2": "node 2/solution-2.js",
     "start:3": "ts-node 3/solution-3.ts"
   },
   "devDependencies": {

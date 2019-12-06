@@ -1,39 +1,41 @@
 const fs = require('fs');
+const path = require('path');
 
-const contents = fs.readFileSync('./input.txt').toString('utf-8');
+const contents = fs.readFileSync(path.resolve(__dirname, './input.txt')).toString('utf-8');
 
 /**
  * runs the opcode
  * @param {number[]} opcode
- * @param {[number = 0]} recovery1
- * @param {[number = 0]} recovery2
+ * @param {number} recovery1
+ * @param {number} recovery2
  */
-function runProgram(opcode, recovery1, recovery2) {
-  const tempOpcode = opcode;
+function runProgram(opcode, recovery1 = 0, recovery2 = 0) {
+  // store in variable to prevent mutation
+  const temp = opcode;
 
-  tempOpcode[1] = recovery1;
-  tempOpcode[2] = recovery2;
+  temp[1] = recovery1;
+  temp[2] = recovery2;
   let currentIndex = 0;
 
-  while (tempOpcode[currentIndex] !== 99) {
-    const pos1 = tempOpcode[currentIndex + 1];
-    const pos2 = tempOpcode[currentIndex + 2];
-    const pos3 = tempOpcode[currentIndex + 3];
+  while (temp[currentIndex] !== 99) {
+    const pos1 = temp[currentIndex + 1];
+    const pos2 = temp[currentIndex + 2];
+    const pos3 = temp[currentIndex + 3];
 
     let value = 0;
 
-    if (tempOpcode[currentIndex] === 1) {
-      value = tempOpcode[pos1] + tempOpcode[pos2];
+    if (temp[currentIndex] === 1) {
+      value = temp[pos1] + temp[pos2];
     } else {
-      value = tempOpcode[pos1] * tempOpcode[pos2];
+      value = temp[pos1] * temp[pos2];
     }
 
-    tempOpcode[pos3] = value;
+    temp[pos3] = value;
 
     currentIndex += 4;
   }
 
-  return tempOpcode[0];
+  return temp[0];
 }
 
 /**
@@ -42,7 +44,7 @@ function runProgram(opcode, recovery1, recovery2) {
  * @param {string} contents
  */
 function part1(contents) {
-  const opcode = contents.split(',').map(op => parseFloat(parseInt(op, 10)));
+  const opcode = contents.split(',').map(op => parseInt(op, 10));
   return runProgram(opcode, 12, 2);
 }
 
@@ -52,7 +54,7 @@ function part1(contents) {
  * @param {string} contents
  */
 function part2(contents) {
-  const opcode = contents.split(',').map(op => parseFloat(parseInt(op, 10)));
+  const opcode = contents.split(',').map(op => parseInt(op, 10));
 
   for (let i = 0; i < 100; i++) {
     for (let j = 0; j < 100; j++) {

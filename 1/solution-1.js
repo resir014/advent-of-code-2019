@@ -1,6 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 
-const contents = fs.readFileSync('./input-1.txt').toString('utf-8');
+const contents = fs.readFileSync(path.resolve(__dirname, './input.txt')).toString('utf-8');
 
 /**
  * gets the base fuel given the module's mass
@@ -16,8 +17,8 @@ function getBaseFuel(mass) {
  * @param {string} contents
  */
 function part1(contents) {
-  const fuels = [...contents.split('\r\n')].map(line => {
-    const mass = parseFloat(parseInt(line, 10));
+  const fuels = [...contents.split(/\r?\n/)].map(line => {
+    const mass = parseInt(line, 10);
 
     return getBaseFuel(mass);
   });
@@ -31,8 +32,8 @@ function part1(contents) {
  * @param {string} contents
  */
 function part2(contents) {
-  const fuels = [...contents.split('\r\n')].map(line => {
-    const mass = parseFloat(parseInt(line, 10));
+  const fuels = [...contents.split(/\r?\n/)].map(line => {
+    const mass = parseInt(line, 10);
 
     return getBaseFuel(mass);
   });

@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 
 const contents = fs.readFileSync(path.resolve(__dirname, './input.txt')).toString();
-const firstInstruction = contents.split('\r\n')[0];
-const secondInstruction = contents.split('\r\n')[0];
+const firstInstruction = contents.split(/\r?\n/)[0];
+const secondInstruction = contents.split(/\r?\n/)[0];
 
 class Point {
   constructor(private x: number = 1, private y: number = 1) {}
