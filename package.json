@@ -11,7 +11,8 @@
     "start:1": "node 1/solution-1.js",
     "start:2": "node 2/solution-2.js",
     "start:3": "ts-node 3/solution-3.ts",
-    "start:4": "ts-node 4/solution-4.ts"
+    "start:4": "ts-node 4/solution-4.ts",
+    "start:5": "ts-node 5/solution-5.ts"
   },
   "devDependencies": {
     "@types/node": "^12.12.14",
