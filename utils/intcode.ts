@@ -7,7 +7,7 @@ type Operation = {
 
 const PARAMETER_PARSE = /^(\d+)(\d\d)|(\d+)$/;
 
-export class Program {
+export class IntcodeProgram {
   public pointer = 0;
 
   public static parse(contents: string) {
