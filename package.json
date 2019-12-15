@@ -12,10 +12,14 @@
     "start:2": "node 2/solution-2.js",
     "start:3": "ts-node 3/solution-3.ts",
     "start:4": "ts-node 4/solution-4.ts",
-    "start:5": "ts-node 5/solution-5.ts"
+    "start:5": "ts-node 5/solution-5.ts",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
   }

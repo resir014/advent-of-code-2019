@@ -1,4 +1,5 @@
-type Argument = { value: number; mode: 'position' | 'immediate' };
+type ArgumentMode = 'position' | 'immediate';
+type Argument = { value: number; mode: ArgumentMode };
 
 type Operation = {
   argCount: number;
@@ -28,7 +29,7 @@ export class IntcodeProgram {
       this.runInstructionSet();
     }
 
-    console.log('terminated at index', this.pointer);
+    console.log('terminated at pointer', this.pointer);
     return this.getValue(this.pointer + 1);
   }
 
